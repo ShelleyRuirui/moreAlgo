@@ -14,6 +14,7 @@ public class SubsetSum {
 		return search(array, pos + 1, k) || search(array, pos + 1, k - array[pos]);
 	}
 
+	// Use bit to represent whether an element is contained in the set.
 	public boolean canFindSubset2(int[] array, int k) {
 		for (int i = 0; i < Math.pow(2, array.length); i ++) {
 			int sum = 0;
