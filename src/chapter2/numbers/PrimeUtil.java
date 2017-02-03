@@ -37,7 +37,6 @@ public class PrimeUtil {
     public static List<Integer> getPrimes(int n) {
         List<Integer> primes = new ArrayList<>();
         boolean[] primeIndicators = new boolean[n+1];
-        primeIndicators[2] = true;
         for (int i = 0; i < primeIndicators.length; i++) {
             primeIndicators[i] = true;
         }
