@@ -52,7 +52,7 @@ public class PrimeUtil {
     }
 
     // fast power, time: O(logm)
-    private static long pow(long n, long m) {
+    public static long pow(long n, long m) {
         long result = 1;
         long multiply = n;
         while (m > 0) {
@@ -62,14 +62,27 @@ public class PrimeUtil {
             multiply *= multiply;
             m = m >> 1;
         }
-        System.err.println("result:" + result);
+        return result;
+    }
+
+    public static long powerMod(long n, long m, long N) {
+        long result = 1;
+        long multiply = n;
+        while (m > 0) {
+            if (m % 2 == 1) {
+                result = multiply * result % N;
+            }
+            multiply = multiply * multiply % N;
+            m = m >> 1;
+        }
         return result;
     }
 
     public static void main(String[] args){
 //        System.out.println(isPrime(112567781));
-        int n = 100000;
-        System.out.println(getPrimes(n).size());
-        System.out.println(getPrimes(n));
+//        int n = 100000;
+//        System.out.println(getPrimes(n).size());
+//        System.out.println(getPrimes(n));
+        System.out.println(powerMod(3, 27, 55));
     }
 }

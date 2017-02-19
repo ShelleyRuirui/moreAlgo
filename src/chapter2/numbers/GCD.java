@@ -5,28 +5,37 @@ package chapter2.numbers;
  */
 public class GCD {
     // Calculate GCD of a and b
-    public static int calcGCD(int a, int b) {
+    public static long calcGCD(long a, long b) {
         if (a < b) return calcGCD(b, a);
         if (b == 0) return a;
         return calcGCD(b, a % b);
     }
 
     // Calc x, y such that ax+by=GCD(a,b)
-    public static int[] extendedGCD(int a, int b) {
+    public static long[] extendedGCD(long a, long b) {
         if (a < b) {
-            int[] swapResult = extendedGCD(b, a);
-            return new int[]{swapResult[1], swapResult[0], swapResult[2]};
+            long[] swapResult = extendedGCD(b, a);
+            return new long[]{swapResult[1], swapResult[0], swapResult[2]};
         }
-        if (b == 0) return new int[]{1, 0, a};
-        int[] prevResult = extendedGCD(b, a%b);
-        int prevX = prevResult[0];
-        int prevY = prevResult[1];
-        int gcd = prevResult[2];
-        return new int[]{prevY, prevX - a / b * prevY, gcd};
+        if (b == 0) return new long[]{1, 0, a};
+        long[] prevResult = extendedGCD(b, a%b);
+        long prevX = prevResult[0];
+        long prevY = prevResult[1];
+        long gcd = prevResult[2];
+        return new long[]{prevY, prevX - a / b * prevY, gcd};
+    }
+
+    public static long findModReverse(long a, long N) {
+        long originalResult = extendedGCD(a, N)[0];
+        if (originalResult < 0 || originalResult >= N) {
+            long numOfNToAdd = Math.abs(originalResult) / N + 1;
+            return originalResult + numOfNToAdd * N;
+        }
+        return originalResult;
     }
 
     public static void main(String[] args) {
-        int[] result = extendedGCD(12, 43);
-        System.out.println("x:" + result[0] + " y:" + result[1]);
+        long result = findModReverse(3, 132);
+        System.out.println(result);
     }
 }
