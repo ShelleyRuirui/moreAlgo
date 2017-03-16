@@ -35,7 +35,7 @@ public class PrimeUtil {
 
     // sieve of Eratosthenes
     public static List<Integer> getPrimes(int n) {
-        List<Integer> primes = new ArrayList<>();
+        List<Integer> primes = new ArrayList<Integer>();
         boolean[] primeIndicators = new boolean[n+1];
         for (int i = 0; i < primeIndicators.length; i++) {
             primeIndicators[i] = true;

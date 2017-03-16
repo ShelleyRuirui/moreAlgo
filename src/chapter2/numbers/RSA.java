@@ -52,7 +52,7 @@ public class RSA {
     }
 
     private static List<Long> encode(String msg, long publicKey, int e) {
-        List<Long> result = new ArrayList<>();
+        List<Long> result = new ArrayList<Long>();
         for (char c : msg.toCharArray()) {
             result.add(PrimeUtil.pow(c, e) % publicKey);
         }
