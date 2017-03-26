@@ -1,4 +1,4 @@
-package chapter2.divideConquer;
+package chapter2.greedy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
